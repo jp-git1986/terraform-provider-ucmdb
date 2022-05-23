@@ -30,8 +30,8 @@ checksum:
       name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
   name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
   algorithm: sha256
-publishers:
-  - name: artifactory
-    cmd: curl -u '{{.Env.ARTIFACTORY_USER}}:{{.Env.ARTIFACTORY_PASS}}' -X PUT 'https://artifactory.sofa.dev/artifactory/monitoring-go-local/providers/{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.zip' -T 'dist/{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.zip'
+#publishers:
+#  - name: artifactory
+#    cmd: curl -u '{{.Env.ARTIFACTORY_USER}}:{{.Env.ARTIFACTORY_PASS}}' -X PUT 'https://artifactory.sofa.dev/artifactory/monitoring-go-local/providers/{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.zip' -T 'dist/{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.zip'
 #    cmd: jf rt u '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.zip'
   
