@@ -1,0 +1,37 @@
+# This is an example .goreleaser.yml file with some sensible defaults.
+# Make sure to check the documentation at https://goreleaser.com
+
+gitlab_urls:
+  api:  https://gitlab.sofa.dev/api/v4
+  download: https://gitlab.sofa.dev
+  skip_tls_verify: false
+  use_package_registry: false
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+      - GITLAB_TOKEN={{ .Env.GITLAB_TOKEN }}
+    flags:
+      - -trimpath
+    ldflags:
+      - '-s -w -X main.version={{.Version}} -X main.commit={{.Commit}}'
+    goos:
+      - linux
+      - windows
+    goarch:
+      - amd64
+    binary: '{{ .ProjectName }}_v{{ .Version }}'
+archives:
+  - format: zip
+    name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+checksum:
+  extra_files:
+    - glob: 'terraform-registry-manifest.json'
+      name_template: '{{ .ProjectName }}_{{ .Version }}_manifest.json'
+  name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
+  algorithm: sha256
+publishers:
+  - name: artifactory
+    cmd: curl -u '{{.Env.ARTIFACTORY_USER}}:{{.Env.ARTIFACTORY_PASS}}' -X PUT 'https://artifactory.sofa.dev/artifactory/monitoring-go-local/providers/{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.zip' -T 'dist/{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.zip'
+#    cmd: jf rt u '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}.zip'
+  
