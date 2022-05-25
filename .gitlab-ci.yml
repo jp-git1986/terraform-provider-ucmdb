@@ -18,7 +18,6 @@ release-to-github:
     - git remote add github $GITHUB_REPO_URL
     - git ls-files
     - git checkout main
-    - git tag $CI_COMMIT_TAG
     - git push -u github main
     - git push github $CI_COMMIT_TAG
   tags:
