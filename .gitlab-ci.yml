@@ -8,7 +8,7 @@ stages:
   - release
 
 # trigger
-connect-to-github:
+release-to-github:
   stage: release
   variables: 
     GIT_DEPTH: 0
@@ -28,6 +28,7 @@ connect-to-github:
     - git config -l
     - git ls-files
     - git checkout main
+    - git tag
     - git push -u github main
     - git tag v1.0.0
     - git push github v1.0.0
