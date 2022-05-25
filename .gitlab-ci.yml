@@ -7,39 +7,30 @@ workflow:
 stages:
   - release
 
-# trigger
+# trigger releasing to GitHub.com
 release-to-github:
   stage: release
   variables: 
     GIT_DEPTH: 0
-  #  GITLAB_TOKEN: "$GITLAB_ACCESS_TOKEN"
   image: 
     name: artifactory.sofa.dev/monitoring-docker-local/goreleaser:1.0.0
     entrypoint: ['']
   script:
-    - pwd
-    - ls -al
     - git config --global user.name "$GITHUB_USER"
     - git config --global user.email "$GITHUB_EMAIL"
     - git config --global credential.helper store
     - echo "https://$GITHUB_USER:$GITHUB_PASS@github.com" > ~/.git-credentials
     - git remote add github $GITHUB_REPO_URL
-    - git status
-    - git config -l
     - git ls-files
     - git checkout main
-    - git tag
+    - git tag $CI_COMMIT_TAG
     - git push -u github main
-    - git tag v1.0.0
-    - git push github v1.0.0
-  #  - ./jfrog go-config --repo-deploy monitoring-go-local --server-id-deploy rt-server
-  #  - ./jfrog gp v1.0.11
-  # - ./jfrog rt gp monitoring-go-local $CI_COMMIT_TAG --server-id rt-server
+    - git push github $CI_COMMIT_TAG
   tags:
     - dockermachine
   allow_failure: false
-  #rules:
-  #  - if: $CI_COMMIT_TAG
+  rules:
+    - if: $CI_COMMIT_TAG
 
 
 
