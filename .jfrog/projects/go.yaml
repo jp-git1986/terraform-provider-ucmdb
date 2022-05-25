@@ -1,0 +1,8 @@
+version: 1
+type: go
+resolver:
+  repo: monitoring-go-virtual
+  serverId: artifactory.sofa.dev
+deployer:
+  repo: monitoring-go-virtual
+  serverId: artifactory.sofa.dev
