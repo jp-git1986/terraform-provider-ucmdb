@@ -33,10 +33,10 @@ provider "downtimes" {
 
 - `target_env` (String) Tag representing the target UCMDB environment. Possible values are: `CMS`, `APM`, `OPSB`. Based on the tag value the following Environmental Variables must be set:
 
-    UCMDB_<target_env>_ADDRESS - UCMDB REST API url, e.g. `https://<fqdn>:<port>/rest-api`
+    `UCMDB_<target_env>_ADDRESS` - UCMDB REST API url, e.g. `https://<fqdn>:<port>/rest-api`
 
-    UCMDB_<target_env>_CMS_USER - UCMDB REST API username
+    `UCMDB_<target_env>_CMS_USER` - UCMDB REST API username
 
-    UCMDB_<target_env>_CMS_PASSWORD - UCMDB REST API password
+    `UCMDB_<target_env>_CMS_PASSWORD` - UCMDB REST API password
 
 
