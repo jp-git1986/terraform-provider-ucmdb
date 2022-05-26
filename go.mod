@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.16.0
-	github.com/panderosa/ucmdb-sdk v1.0.3
+	github.com/panderosa/ucmdb-sdk v1.0.4
 )
 
 require (
