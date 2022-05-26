@@ -39,11 +39,14 @@ jobs:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
       -
-        name: Configure authenticate over HTTPS
+        name: Configure authentication to my private modules
         run: echo "machine github.com login $USER password $GITOK" > $HOME/.netrc
         env:
           USER: panderosa
           GITOK: ${{ secrets.PAT }}
+      -
+        name: Configure private modules
+        run: export GONOSUMDB="github.com/panderosa/*"
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v3
