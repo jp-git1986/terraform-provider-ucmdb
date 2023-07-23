@@ -9,7 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/validation"
 	"github.com/panderosa/terraform-provider-ucmdb/utils"
-	rest "github.com/panderosa/ucmdb-sdk/rest"
+	rest "github.com/jp-git1986/ucmdb-sdk/rest"
 )
 
 func resourceDataModelCi() *schema.Resource {
