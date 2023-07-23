@@ -7,8 +7,8 @@ import (
 	"strings"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
-	"github.com/panderosa/terraform-provider-ucmdb/utils"
-	rest "github.com/panderosa/ucmdb-sdk/rest"
+	"github.com/jp-git1986/terraform-provider-ucmdb/utils"
+	rest "github.com/jp-git1986/ucmdb-sdk-new/rest"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
