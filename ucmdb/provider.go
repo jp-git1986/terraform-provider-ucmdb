@@ -8,7 +8,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	rest "github.com/jp-git1986/ucmdb-sdk/rest"
+	rest "github.com/jp1986-inc/ucmdb/rest"
 )
 
 // this function returns a terraform ResourceProvider interface
